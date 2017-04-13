@@ -1,0 +1,58 @@
+<div class="main_div">
+</div>
+
+<div class="container">
+
+<div class="row">
+ <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-3 col-lg-4 col-lg-offset-4">
+  <img style="width:85%;" src="../images/logo.png">
+ </div>
+</div><br>
+
+<div class="row">
+ <div>
+  <button data-toggle="modal" data-target="#apps" class="btn-special btn-lg col-xs-12 col-sm-12 col-md-8 col-md-offset-3 col-lg-4 col-lg-offset-4"">View Applications</button>
+ </div>
+</div><br>
+
+<div class="row">
+ <div>
+  <button data-toggle="modal" data-target="#prompt" class="btn-special btn-lg col-xs-12 col-sm-12 col-md-8 col-md-offset-3 col-lg-4 col-lg-offset-4"">Submit Application</button>
+ </div>
+</div>
+
+</div>
+
+<div id="apps" class="modal fade" style="z-index:9999;" role="dialog">
+ <div class="modal-dialog" role="document">
+ <div style="box-shadow: 5px 5px 20px 10px #fcf8e3;" class="modal-content custom_modal">
+   <div class="modal-body">
+     <div class="form-group" ng-class="{ 'has-success': form.department.$valid && submitted,
+                                            'has-error': form.department.$invalid && submitted }">
+          <label>Choose your application from the list below</label><br>
+
+       <select ng-model="user.department" name="department" class="form-control" required>
+         <option></option>
+         <option ng-repeat="dep in departments" value="{{dep}}">{{dep}}</option> 
+       </select>
+
+     </div><br>   
+
+   </div>
+     <div class="modal-footer">
+        <button class="btn btn-danger" ng-click="fetch()" data-dismiss="modal">Show the application</button>
+     </div>
+    </div>
+  </div>
+</div> 
+
+
+<div id="prompt" class="modal fade" style="z-index:9999;" role="dialog">
+ <div class="modal-dialog" role="document">
+ <div style="box-shadow: 5px 5px 20px 10px #fcf8e3;" class="modal-content custom_modal">
+   <div class="modal-body">
+      <h3>Will be opened soon</h3>
+   </div>
+    </div>
+  </div>
+</div> 
