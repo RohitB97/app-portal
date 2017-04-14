@@ -37,7 +37,7 @@
           <label>Choose your application from the list below</label><br><br>
         <select ng-model="user.department" name="department" class="form-control custom_modal">
          <option></option>
-         <option ng-repeat="dep in departments" value="{{dep}}">{{dep}}</option> 
+         <option ng-repeat="app in applications" value="{{app}}">{{app}}</option> 
        </select>
 
      </div>   
@@ -53,10 +53,35 @@
 
 <div id="prompt" class="modal fade" style="z-index:9999;" role="dialog">
  <div class="modal-dialog" role="document">
- <div style="box-shadow: 5px 5px 20px 10px #fcf8e3;" class="modal-content custom_modal">
-   <div class="modal-body">
-      <h3>Will be opened soon</h3>
-   </div>
+ <div style="box-shadow: 2px 2px 10px 10px #fcf8e3;" class="modal-content custom_modal">
+  <div class="modal-body">
+    <div class="form-group">
+      <label>Please Enter Your Name</label><br>
+        <input type="text" class="form-control custom_modal" ng-model="user.name">
+    </div>
+
+    <div class="form-group">
+      <label>Please Enter Your Roll Number</label><br>
+        <input type="text" class="form-control custom_modal" ng-model="user.roll_no">
+    </div>
+
+    <div class="form-group">
+      <label>Please Choose your department</label><br>
+       <select ng-model="user.department" name="department" class="form-control custom_modal">
+         <option></option>
+         <option ng-repeat="dep in departments" value="{{dep}}">{{dep}}</option>
+       </select>  
+    </div>
+
+    <div class="form-group">
+      <label>Position applying for ?</label><br>
+        <input type="text" class="form-control custom_modal" ng-model="user.position">
+    </div>  
+  </div>
+   <div class="modal-footer">
+    <button ng-hide="status" type="file" ngf-select="uploadFiles($file)" accept="application/pdf" class="btn btn-danger">Upload PDF</button>
+    <button ng-show="status" id="status" class="btn btn-danger" disabled="">{{status}}</button>
+   </div> 
  </div>
  </div>
 </div> 

@@ -8,8 +8,8 @@
  * Controller of the appPortalApp
  */
 angular.module('appPortalApp')
-  .controller('MainCtrl',['$scope', function ($scope) {
-       $scope.departments = [
+  .controller('MainCtrl',['$scope','$http','Upload','cloudinary','$location',function ($scope,$http,$upload,cloudinary,$location) {
+       $scope.applications = [
        'Web&MobileOps_Coordinator',
        'Sponsorship&PR_PR_Strategist',
        'Sponsorship&PR_Coordinator',
@@ -43,11 +43,77 @@ angular.module('appPortalApp')
        'Safety_Security_Coordinator'
       ];
 
+      $scope.departments=[
+        'Events',
+        'Web and Mobile Operations',
+        'Hospitality',
+        'Spons',
+        'Proshows',
+        'Facilities',
+        'Design and Media',
+        'Marketing and Sales',
+        'Publicity',
+        'Finance',
+        'QMS',
+        'Safety and Security'
+      ];
+
       $scope.shoot = function(){
             window.open('https://docs.google.com/spreadsheets/d/1VD737h2Pk5jDa7rqDfRNF0CjIgAwASoYymh3OvQQNCY/edit#gid=1651735497','_blank');
       };
 
       $scope.fetch = function(){
       	window.open('files/'+$scope.user.department+'.pdf','_blank');
+      };
+
+      $scope.uploadFiles = function(file){      
+      var d = new Date();      
+      $scope.file = file;
+      if (!$scope.file) return;
+
+        if (file && !file.$error) {
+          $scope.status = true;
+            
+          file.upload = $upload.upload({
+            url: "https://api.cloudinary.com/v1_1/gallerysaarang/upload",
+            data: {
+              upload_preset: "applications",
+              tags: 'saarang2018-apps',
+              context: 'photo=' + $scope.title,
+              file: file
+            }
+          }).progress(function (e) {
+            file.progress = Math.round((e.loaded * 100.0) / e.total);
+            $scope.status = "Uploading... " + file.progress + "%";
+          }).success(function (data, status, headers, config) {
+            data.context = {custom: {photo: $scope.title}};
+            file.result = data;
+            $scope.user.app_link = file.result.url;
+            var data_user = {
+                 "type":"insert",
+                 "args": {
+                    "table":"applicants",
+                    "objects": [{
+                      "name":$scope.user.name,
+                      "department":$scope.user.department,
+                      "roll_no":$scope.user.roll_no,
+                      "app_link":$scope.user.app_link,
+                      "position":$scope.user.position,
+                      "uploaded_at": d.getDate() + "/" + d.getMonth() + "/" + d.getFullYear() + " - " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds()
+                  }]
+                }
+            };
+
+            $http.post('https://data.saarang.org/v1/query',data_user).then(function(){
+             console.log("row inserted");
+             alert('Successfully Submitted! All the best for the interview :)')
+              location.reload();     //refreshing the page after the upload
+             }).catch(function(err){
+                 console.log(err);
+            });
+          }).error(function (data, status, headers, config) {
+            file.result = data;
+          });
+        }
       };
   }]);

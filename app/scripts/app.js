@@ -14,6 +14,8 @@ angular
     'ngCookies',
     'ngResource',
     'ngRoute',
+    'ngFileUpload',
+    'cloudinary',
     'ngSanitize',
     'ngTouch'
   ])
