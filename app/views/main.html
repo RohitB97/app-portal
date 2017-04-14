@@ -28,13 +28,13 @@
  <div style="box-shadow: 5px 5px 20px 10px #fcf8e3;" class="modal-content custom_modal">
    <div class="modal-body">
      <div class="form-group">
-          <label>Choose your application from the list below</label><br>
-        <select ng-model="user.department" name="department" class="form-control">
+          <label>Choose your application from the list below</label><br><br>
+        <select ng-model="user.department" name="department" class="form-control custom_modal">
          <option></option>
          <option ng-repeat="dep in departments" value="{{dep}}">{{dep}}</option> 
        </select>
 
-     </div><br>   
+     </div>   
 
    </div>
      <div class="modal-footer">
