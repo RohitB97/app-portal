@@ -43,7 +43,11 @@ angular.module('appPortalApp')
        'Safety_Security_Coordinator'
       ];
 
+      $scope.shoot = function(){
+            window.open('https://docs.google.com/spreadsheets/d/1VD737h2Pk5jDa7rqDfRNF0CjIgAwASoYymh3OvQQNCY/edit#gid=1651735497','_blank');
+      };
+
       $scope.fetch = function(){
-      	window.open('../../files/'+$scope.user.department+'.pdf','_blank');
+      	window.open('files/'+$scope.user.department+'.pdf','_blank');
       };
   }]);
