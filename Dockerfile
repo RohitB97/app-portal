@@ -4,7 +4,7 @@ RUN mkdir /opt/app
 # when we change our application's nodejs dependencies:
 COPY package.json /tmp/package.json
 COPY bower.json /tmp/bower.json
-RUN cd /tmp && npm install --registry http://registry.npmjs.org.au -g npm bower grunt-cli http-server && npm install && bower --allow-root install
+RUN cd /tmp && npm install --registry https://npm.strongloop.com -g npm bower grunt-cli http-server && npm install && bower --allow-root install
 RUN mkdir -p /opt/app && cp -a /tmp/node_modules /opt/app/ && cp -a /tmp/bower_components /opt/app/
 
 # From here we load our application's code in, therefore the previous docker
