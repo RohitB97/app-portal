@@ -10,6 +10,7 @@ RUN mkdir -p /opt/app && cp -a /tmp/node_modules /opt/app/ && cp -a /tmp/bower_c
 # From here we load our application's code in, therefore the previous docker
 # "layer" thats been cached will be used if possible
 WORKDIR /opt/app
-COPY . /opt/app
+COPY . /opt/app 
 RUN grunt build
+RUN cp -r app/files/. dist/files/
 CMD ["http-server", "/opt/app/dist", "-d", "False"] 
