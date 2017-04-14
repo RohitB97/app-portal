@@ -58,7 +58,11 @@ angular.module('appPortalApp')
         'Safety and Security'
       ];
 
-      $scope.shoot = function(){
+      $scope.shootNew = function(){
+            window.open('https://docs.google.com/spreadsheets/d/11vvv3GLV2Pozt9IfOYhU9krD-YPQAqbc91kodcvJVXA/edit#gid=0','_blank');
+      };
+
+      $scope.shootOld = function(){
             window.open('https://docs.google.com/spreadsheets/d/1VD737h2Pk5jDa7rqDfRNF0CjIgAwASoYymh3OvQQNCY/edit#gid=1651735497','_blank');
       };
 
@@ -106,7 +110,7 @@ angular.module('appPortalApp')
 
             $http.post('https://data.saarang.org/v1/query',data_user).then(function(){
              console.log("row inserted");
-             alert('Successfully Submitted! All the best for the interview :)')
+             alert('Successfully Submitted! All the best for the interview :)');
               location.reload();     //refreshing the page after the upload
              }).catch(function(err){
                  console.log(err);
