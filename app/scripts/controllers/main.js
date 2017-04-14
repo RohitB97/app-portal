@@ -88,7 +88,7 @@ angular.module('appPortalApp')
             }
           }).progress(function (e) {
             file.progress = Math.round((e.loaded * 100.0) / e.total);
-            $scope.status = "Uploading... " + file.progress + "%";
+            $scope.progress = "Uploading... " + file.progress + "%";
           }).success(function (data, status, headers, config) {
             data.context = {custom: {photo: $scope.title}};
             file.result = data;
