@@ -67,15 +67,15 @@ angular.module('appPortalApp')
       };
 
       $scope.fetch = function(){
-      	window.open('files/'+$scope.user.department+'.pdf','_blank');
+      	window.open('files/'+$scope.user.application+'.pdf','_blank');
       };
 
       $scope.uploadFiles = function(file){      
       var d = new Date();      
       $scope.file = file;
-      if (!$scope.file) return;
+      if (!$scope.file) alert("Please Upload the file");
 
-        if (file && !file.$error) {
+        if (file && !file.$error && $scope.user) {
           $scope.status = true;
             
           file.upload = $upload.upload({
@@ -119,5 +119,10 @@ angular.module('appPortalApp')
             file.result = data;
           });
         }
+
+        else {
+          alert('Please fill the details');
+          location.reload();
+        } 
       };
   }]);
