@@ -60,16 +60,7 @@ angular.module('appPortalApp')
 
       $scope.proceed = function(res){
         if(res){
-            var data = {'secret':'6LcLMh0UAAAAAJl_Qwf9VaiEIIeVBHWslwpi3lJf', 'response': res};
-            $http.post('https://www.google.com/recaptcha/api/siteverify',data).success(function(response){
-                
-                if(response.success == true)  
-                  $scope.verify = true;
-                else {
-                  alert('Please try again');
-                  location.reload();
-                 } 
-            });
+             $scope.verify = true;
           }  
       };
 
