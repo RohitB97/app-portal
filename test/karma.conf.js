@@ -33,6 +33,7 @@ module.exports = function(config) {
       'bower_components/cloudinary-core/cloudinary-core.js',
       'bower_components/cloudinary_ng/js/angular.cloudinary.js',
       'bower_components/ng-file-upload/ng-file-upload.js',
+      'bower_components/angular-recaptcha/release/angular-recaptcha.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

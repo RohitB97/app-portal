@@ -30,6 +30,7 @@
 <div class="row">
  <div>
   <button ng-click="shootOld()" class="btn-special btn-lg col-xs-12 col-sm-12 col-md-8 col-md-offset-3 col-lg-4 col-lg-offset-4">Saarang'17 Team Details</button>
+  </div>
  </div>
 </div>
 
@@ -85,12 +86,23 @@
     </div>
 
     <h4>* Please upload only PDFs</h4>
-    <h4>* Name the file ONLY in the format mentioned by the department heads</h4>  
+    <h4>* Name the file ONLY in the format mentioned by the department heads</h4>
+
+    <div class="form-group">
+     <div ng-hide="verify" vc-recaptcha key="'6LcLMh0UAAAAAJKnIdIRNYrAdkaziWzkTrwQNV_b'" on-success="proceed(response)"></div><br>
+    </div>
+     
   </div>
-   <div class="modal-footer">
-    <button ng-hide="status" type="file" ngf-select="uploadFiles($file)" accept="application/pdf" class="btn btn-danger">Upload PDF</button>
+   <div class="modal-footer"> 
+    <button ng-show="verify" type="file" ngf-select="uploadFiles($file)" accept="application/pdf" class="btn btn-danger">Upload PDF</button>
     <button ng-show="status" id="status" class="btn btn-danger" disabled="">{{progress}}</button>
    </div> 
  </div>
  </div>
-</div> 
+</div>
+
+<script>
+function check(){
+    console.log('test');
+}
+</script> 

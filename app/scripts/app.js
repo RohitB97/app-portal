@@ -17,7 +17,8 @@ angular
     'ngFileUpload',
     'cloudinary',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'vcRecaptcha'
   ])
   .config(function ($routeProvider) {
     $routeProvider

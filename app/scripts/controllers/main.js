@@ -58,6 +58,21 @@ angular.module('appPortalApp')
         'Safety and Security'
       ];
 
+      $scope.proceed = function(res){
+        if(res){
+            var data = {'secret':'6LcLMh0UAAAAAJl_Qwf9VaiEIIeVBHWslwpi3lJf', 'response': res};
+            $http.post('https://www.google.com/recaptcha/api/siteverify',data).success(function(response){
+                
+                if(response.success == true)  
+                  $scope.verify = true;
+                else {
+                  alert('Please try again');
+                  location.reload();
+                 } 
+            });
+          }  
+      };
+
       $scope.shootNew = function(){
             window.open('https://docs.google.com/spreadsheets/d/11vvv3GLV2Pozt9IfOYhU9krD-YPQAqbc91kodcvJVXA/edit#gid=0','_blank');
       };
@@ -76,6 +91,7 @@ angular.module('appPortalApp')
       if (!$scope.file) alert("Please Upload the file");
 
         if (file && !file.$error && $scope.user) {
+          $scope.verify = false;
           $scope.status = true;
             
           file.upload = $upload.upload({
