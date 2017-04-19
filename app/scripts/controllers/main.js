@@ -11,9 +11,10 @@ angular.module('appPortalApp')
   .controller('MainCtrl',['$scope','$http','Upload','cloudinary','$location',function ($scope,$http,$upload,cloudinary,$location) {
        $scope.applications = [
        'Web&MobileOps_Coordinator',
-       'Sponsorship&PR_PR_Strategist',
-       'Sponsorship&PR_Coordinator',
-       'Sponsorship&PR_Creative',
+       'FR_SuperCoord',
+       'FR_Coordinator',
+       'Safety_Security_Coordinator',
+       'Safety_Security_SuperCoord',
        'Marketing&Sales_Coordinator',
        'Marketing&Sales_DeputyCoord',
        'Design_SuperCoord',
@@ -25,8 +26,9 @@ angular.module('appPortalApp')
        'Media_Audiography_Coord',
        'Ambience_SuperCoord',
        'Ambience_Coordinator',
-       'Proshows_Coordinator',
-       'Proshows_DeputyCoord',
+       'Finance_PPM_Coordinator',
+       'Finance_Catering_Coordinator',
+       'Finance_Manager',
        'QMS_Analytics_Head',
        'QMS_Event_Manager',
        'QMS_Department_Manager',
@@ -35,12 +37,17 @@ angular.module('appPortalApp')
        'Hospitality_Coordinator',
        'Publicity_Strategist',
        'Publicity_Coordinator',
-       'Finance_PPM_Coordinator',
-       'Finance_Catering_Coordinator',
-       'Finance_Manager',
-       'FR_SuperCoord',
-       'FR_Coordinator',
-       'Safety_Security_Coordinator'
+       'Thespian_Coordinator',
+       'Oratoryclub_Coordinator',
+       'Adzone_Coordinator',
+       'Spotlight_Coordinator',
+       'Informals_Coordinator',
+       'Roadshows_Coordinator',
+       'Proshows_Coordinator',
+       'Proshows_DeputyCoord',
+       'Sponsorship&PR_PR_Strategist',
+       'Sponsorship&PR_Coordinator',
+       'Sponsorship&PR_Creative',
       ];
 
       $scope.departments=[
@@ -81,7 +88,7 @@ angular.module('appPortalApp')
       $scope.file = file;
       if (!$scope.file) alert("Please Upload the file");
 
-        if (file && !file.$error && $scope.user) {
+        if (file && !file.$error && Object.keys($scope.user).length == 4) {
           $scope.verify = false;
           $scope.status = true;
             
@@ -97,9 +104,9 @@ angular.module('appPortalApp')
             file.progress = Math.round((e.loaded * 100.0) / e.total);
             $scope.progress = "Uploading... " + file.progress + "%";
           }).success(function (data, status, headers, config) {
-            data.context = {custom: {photo: $scope.title}};
-            file.result = data;
-            $scope.user.app_link = file.result.url;
+            $scope.status = false;
+            $scope.validating = true;
+            $scope.user.app_link = data.url;
             var data_user = {
                  "type":"insert",
                  "args": {
@@ -116,7 +123,6 @@ angular.module('appPortalApp')
             };
 
             $http.post('https://data.saarang.org/v1/query',data_user).then(function(){
-             console.log("row inserted");
              alert('Successfully Submitted! All the best for the interview :)');
               location.reload();     //refreshing the page after the upload
              }).catch(function(err){
@@ -128,7 +134,7 @@ angular.module('appPortalApp')
         }
 
         else {
-          alert('Please fill the details');
+          alert('Please fill all the details');
           location.reload();
         } 
       };

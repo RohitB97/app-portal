@@ -95,7 +95,8 @@
   </div>
    <div class="modal-footer"> 
     <button ng-show="verify" type="file" ngf-select="uploadFiles($file)" accept="application/pdf" class="btn btn-danger">Upload PDF</button>
-    <button ng-show="status" id="status" class="btn btn-danger" disabled="">{{progress}}</button>
+    <button ng-show="status" class="btn btn-danger" disabled="">{{progress}}</button>
+    <button ng-show="validating" class="btn btn-success" disabled="">Validating data...</button>
    </div> 
  </div>
  </div>
