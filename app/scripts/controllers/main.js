@@ -37,6 +37,8 @@ angular.module('appPortalApp')
        'Hospitality_Coordinator',
        'Publicity_Strategist',
        'Publicity_Coordinator',
+       'MediaClub_Coordinator',
+       'QuizClub_Coordinator',
        'GamingClub_Coordinator',
        'Nova_Coordinator',
        'Thespian_Coordinator',
