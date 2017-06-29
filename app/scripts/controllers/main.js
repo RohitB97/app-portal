@@ -8,7 +8,7 @@
  * Controller of the appPortalApp
  */
 angular.module('appPortalApp')
-  .controller('MainCtrl',['$scope','$http','Upload','cloudinary','$location',function ($scope,$http,$upload,cloudinary,$location) {
+  .controller('MainCtrl',['$scope','$http','Upload','cloudinary',function ($scope,$http,$upload,cloudinary) {
        $scope.applications = [
        'Web&MobileOps_Coordinator',
        'FR_SuperCoord',
@@ -37,19 +37,26 @@ angular.module('appPortalApp')
        'Hospitality_Coordinator',
        'Publicity_Strategist',
        'Publicity_Coordinator',
-       'MediaClub_Coordinator',
-       'QuizClub_Coordinator',
-       'GamingClub_Coordinator',
-       'Nova_Coordinator',
-       'Thespian_Coordinator',
-       'MusicClub_Coordinator',
-       'Oratoryclub_Coordinator',
        'Adzone_Coordinator',
        'Lifestyle_SuperCoord',
        'Lifestyle_Coordinator',
        'Spotlight_Coordinator',
        'Informals_Coordinator',
        'Roadshows_Coordinator',
+       'Nova_Coordinator',
+       'Thespian_Coordinator',
+       'FineArts_Coordinator',
+       'MediaClub_Coordinator',
+       'ComedyClub_Coordinator',
+       'QuizClub_Coordinator',
+       'GamingClub_Coordinator',
+       'MusicClub_Coordinator',
+       'Oratoryclub_Coordinator',
+       'WordGamesPotpourri_Coordinator',
+       'WordGamesCrossie_Coordinator',
+       'WordGamesSpellBee_Coordinator',
+       'WordGamesScrabble_Coordinator',
+       'WordGamesWTGW_Coordinator',
        'Proshows_Coordinator',
        'Proshows_DeputyCoord',
        'Sponsorship&PR_PR_Strategist',
